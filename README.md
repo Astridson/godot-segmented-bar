@@ -1,6 +1,7 @@
 # godot-segmented-bar
 A SegmentedBar Node to build health and other resource bars with in Godot 4
 
+![examples](examples.gif)
 
 ## Installation
 - Add the content of the addons directory into the `res://addons` directory of your project
