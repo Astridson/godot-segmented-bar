@@ -1,0 +1,136 @@
+[gd_scene load_steps=9 format=3 uid="uid://dofehk3ep5cfp"]
+
+[ext_resource type="FontFile" uid="uid://j3s0g17oneys" path="res://addons/segmented_bar/examples/assets/AtariGames.ttf" id="1_vqbn4"]
+[ext_resource type="Script" path="res://addons/segmented_bar/examples/showcase.gd" id="2_qgaq3"]
+[ext_resource type="PackedScene" uid="uid://bbcxm4dmex7am" path="res://addons/segmented_bar/examples/line/line.tscn" id="3_pw1y2"]
+[ext_resource type="PackedScene" uid="uid://dext1mtumyfmd" path="res://addons/segmented_bar/examples/energy_bar/energy_bar.tscn" id="4_vdir2"]
+[ext_resource type="PackedScene" uid="uid://817qjgteet4u" path="res://addons/segmented_bar/examples/hp/hp.tscn" id="5_3c1id"]
+[ext_resource type="PackedScene" uid="uid://iqwqkuun0e1c" path="res://addons/segmented_bar/examples/shake/shake.tscn" id="6_7tbjj"]
+[ext_resource type="PackedScene" uid="uid://bjmmaki4svr13" path="res://addons/segmented_bar/examples/chevron/chevron.tscn" id="7_gnnbn"]
+
+[sub_resource type="Theme" id="Theme_duafs"]
+default_font = ExtResource("1_vqbn4")
+
+[node name="Showcase" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_duafs")
+script = ExtResource("2_qgaq3")
+
+[node name="LeftSide" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="LeftSide"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[node name="Title" type="Label" parent="LeftSide"]
+modulate = Color(0.929412, 0.929412, 0.929412, 1)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 4.0
+offset_bottom = 22.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+theme_override_constants/outline_size = 4
+text = "Segmented Bar"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="LeftSide"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 31.0
+offset_bottom = 48.0
+grow_horizontal = 2
+text = "HP: 10/10"
+horizontal_alignment = 1
+
+[node name="Bars" type="VBoxContainer" parent="LeftSide"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 56.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="Line" parent="LeftSide/Bars" instance=ExtResource("3_pw1y2")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="EnergyBar" parent="LeftSide/Bars" instance=ExtResource("4_vdir2")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HP" parent="LeftSide/Bars" instance=ExtResource("5_3c1id")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Shake" parent="LeftSide/Bars" instance=ExtResource("6_7tbjj")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Chevron" parent="LeftSide/Bars" instance=ExtResource("7_gnnbn")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="RightSide" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Buttons" type="GridContainer" parent="RightSide"]
+layout_mode = 2
+
+[node name="IncreaseMax" type="Button" parent="RightSide/Buttons"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Max HP +1"
+alignment = 0
+
+[node name="HealFull" type="Button" parent="RightSide/Buttons"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Full Heal"
+alignment = 0
+
+[node name="Damage" type="Button" parent="RightSide/Buttons"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Damage 3"
+alignment = 0
+
+[node name="Heal" type="Button" parent="RightSide/Buttons"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Heal 3"
+alignment = 0
+
+[connection signal="pressed" from="RightSide/Buttons/IncreaseMax" to="." method="_on_increase_max_pressed"]
+[connection signal="pressed" from="RightSide/Buttons/HealFull" to="." method="_on_heal_full_pressed"]
+[connection signal="pressed" from="RightSide/Buttons/Damage" to="." method="_on_damage_pressed"]
+[connection signal="pressed" from="RightSide/Buttons/Heal" to="." method="_on_heal_pressed"]

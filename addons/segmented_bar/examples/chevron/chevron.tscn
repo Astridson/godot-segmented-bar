@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjmmaki4svr13"]
+
+[ext_resource type="Script" path="res://addons/segmented_bar/examples/chevron/chevron.gd" id="1_3cdjh"]
+[ext_resource type="PackedScene" uid="uid://dv4s5pmdxo13n" path="res://addons/segmented_bar/segmented_bar.tscn" id="2_vniba"]
+[ext_resource type="Texture2D" uid="uid://rfqghe1flvn0" path="res://addons/segmented_bar/examples/chevron/assets/chevron_left.png" id="3_22gl4"]
+[ext_resource type="Texture2D" uid="uid://ci0a0eun2a5og" path="res://addons/segmented_bar/examples/chevron/assets/center.png" id="4_lbrtc"]
+[ext_resource type="Texture2D" uid="uid://bptlm37m0k04q" path="res://addons/segmented_bar/examples/chevron/assets/chevron_right.png" id="5_7mpvw"]
+
+[node name="Chevron" type="MarginContainer"]
+script = ExtResource("1_3cdjh")
+heal_color = Color(0.0976563, 0.09375, 0.109375, 1)
+damage_color = Color(0.835938, 0.804688, 0.695313, 1)
+
+[node name="HBoxContainer" type="Control" parent="."]
+custom_minimum_size = Vector2(109, 9)
+layout_mode = 2
+
+[node name="SegmentedBarL" parent="HBoxContainer" instance=ExtResource("2_vniba")]
+unique_name_in_owner = true
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 49.0
+offset_right = 49.0
+offset_bottom = 9.0
+theme_override_constants/separation = -6
+foreground_color = Color(0.839216, 0.807843, 0.698039, 1)
+background_color = Color(0.0980392, 0.0941176, 0.109804, 1)
+segment_texture = ExtResource("3_22gl4")
+total_segments = 50
+seperation = -6
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+self_modulate = Color(0.839216, 0.807843, 0.698039, 1)
+layout_mode = 2
+offset_left = 50.0
+offset_right = 59.0
+offset_bottom = 9.0
+texture = ExtResource("4_lbrtc")
+
+[node name="SegmentedBarR" parent="HBoxContainer" instance=ExtResource("2_vniba")]
+unique_name_in_owner = true
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 55.0
+offset_right = 109.0
+offset_bottom = 9.0
+theme_override_constants/separation = -4
+foreground_color = Color(0.839216, 0.807843, 0.698039, 1)
+background_color = Color(0.0980392, 0.0941176, 0.109804, 1)
+segment_texture = ExtResource("5_7mpvw")
+total_segments = 50
+seperation = -4

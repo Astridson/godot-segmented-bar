@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbcxm4dmex7am"]
+
+[ext_resource type="Script" path="res://addons/segmented_bar/examples/line/line.gd" id="1_uktsj"]
+[ext_resource type="PackedScene" uid="uid://dv4s5pmdxo13n" path="res://addons/segmented_bar/segmented_bar.tscn" id="2_ccvr4"]
+
+[node name="Line" type="MarginContainer"]
+script = ExtResource("1_uktsj")
+damage_color = Color(0.639216, 0.101961, 0.101961, 1)
+heal_color = Color(0.847059, 0.996078, 0.898039, 1)
+
+[node name="SegmentedBar" parent="." instance=ExtResource("2_ccvr4")]
+layout_mode = 2
+theme_override_constants/separation = 0
+foreground_color = Color(0.129412, 0.709804, 0.172549, 1)
+background_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+total_segments = 100
+seperation = 0

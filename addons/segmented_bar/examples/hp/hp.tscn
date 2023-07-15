@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://817qjgteet4u"]
+
+[ext_resource type="Script" path="res://addons/segmented_bar/examples/hp/hp.gd" id="1_5t5fc"]
+[ext_resource type="PackedScene" uid="uid://dv4s5pmdxo13n" path="res://addons/segmented_bar/segmented_bar.tscn" id="1_fkw7j"]
+[ext_resource type="Texture2D" uid="uid://b5kbin53i464f" path="res://addons/segmented_bar/examples/hp/assets/hp_border.png" id="1_sklpe"]
+[ext_resource type="Texture2D" uid="uid://1li6r0wuy51k" path="res://addons/segmented_bar/examples/hp/assets/hp_segment.png" id="2_uf30q"]
+
+[node name="HP" type="MarginContainer"]
+offset_right = 55.0
+offset_bottom = 7.0
+size_flags_horizontal = 0
+script = ExtResource("1_5t5fc")
+damage_color = Color(0.913725, 0.85098, 0.870588, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_sklpe")
+
+[node name="SegmentedBar" parent="TextureRect" instance=ExtResource("1_fkw7j")]
+unique_name_in_owner = true
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 11.0
+offset_top = 2.0
+offset_right = 52.0
+offset_bottom = 5.0
+foreground_color = Color(0.572549, 0.913725, 0.337255, 1)
+background_color = Color(0.901961, 0.411765, 0.376471, 1)
+segment_texture = ExtResource("2_uf30q")
+total_segments = 8
+seperation = -1

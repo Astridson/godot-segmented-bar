@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dext1mtumyfmd"]
+
+[ext_resource type="Script" path="res://addons/segmented_bar/examples/energy_bar/energy_bar.gd" id="1_y7inv"]
+[ext_resource type="PackedScene" uid="uid://dv4s5pmdxo13n" path="res://addons/segmented_bar/segmented_bar.tscn" id="2_6fmg8"]
+[ext_resource type="Texture2D" uid="uid://c117cjx37riqh" path="res://addons/segmented_bar/examples/energy_bar/assets/segment.png" id="3_mjduf"]
+
+[node name="EnergyBar" type="MarginContainer"]
+size_flags_horizontal = 0
+script = ExtResource("1_y7inv")
+damage_color = Color(0.172549, 0.462745, 0.827451, 1)
+foreground_color = Color(0.54902, 0.682353, 0.909804, 1)
+
+[node name="SegmentedBar" parent="." instance=ExtResource("2_6fmg8")]
+layout_mode = 2
+foreground_color = Color(0.54902, 0.682353, 0.909804, 1)
+background_color = Color(0.0745098, 0.172549, 0.239216, 1)
+segment_texture = ExtResource("3_mjduf")

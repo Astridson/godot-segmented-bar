@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://iqwqkuun0e1c"]
+
+[ext_resource type="Script" path="res://addons/segmented_bar/examples/shake/shake.gd" id="1_n0e4t"]
+[ext_resource type="Texture2D" uid="uid://4to63tqnkd3j" path="res://addons/segmented_bar/examples/shake/assets/border.png" id="2_kllbr"]
+[ext_resource type="PackedScene" uid="uid://dv4s5pmdxo13n" path="res://addons/segmented_bar/segmented_bar.tscn" id="3_5issp"]
+[ext_resource type="Texture2D" uid="uid://caqd6rg4vhr5h" path="res://addons/segmented_bar/examples/shake/assets/segment.png" id="4_72ukm"]
+
+[node name="Shake" type="MarginContainer"]
+custom_minimum_size = Vector2(94, 13)
+offset_right = 94.0
+offset_bottom = 13.0
+size_flags_horizontal = 0
+script = ExtResource("1_n0e4t")
+
+[node name="ShakeRoot" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 13)
+layout_mode = 2
+
+[node name="BorderTexture" type="TextureRect" parent="ShakeRoot"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 11.0
+texture = ExtResource("2_kllbr")
+
+[node name="SegmentedBar" parent="ShakeRoot/BorderTexture" instance=ExtResource("3_5issp")]
+unique_name_in_owner = true
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 92.0
+offset_bottom = 6.0
+foreground_color = Color(1, 1, 1, 1)
+background_color = Color(1, 1, 1, 0)
+segment_texture = ExtResource("4_72ukm")
+total_segments = 18
+seperation = 0
