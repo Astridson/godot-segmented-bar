@@ -1,4 +1,7 @@
 # godot-segmented-bar
+[![image](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/astridson_)
+[![image](https://img.shields.io/badge/Mastodon-6364FF?style=for-the-badge&logo=Mastodon&logoColor=white)](https://mastodon.social/@astridson)
+
 A SegmentedBar Node to build health and other resource bars with in Godot 4
 
 ![examples](examples.gif)
