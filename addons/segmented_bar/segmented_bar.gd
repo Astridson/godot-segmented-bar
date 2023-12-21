@@ -152,6 +152,10 @@ func _create_segments() -> void:
 func _update_segments(update_direction: int = 0) -> void: #-1 means update from right to left, +1 is the opposite
 	var size: float = segments.size()
 	
+	#These variables are here for fading. This helps create a "wave" effect on quick transitions.
+	var set_bg_color = background_color
+	var set_fg_color = foreground_color
+	
 	if update_direction < 0:
 		for s in range(size - 1, -1, -1):
 			var segment_frac := s / size
@@ -162,7 +166,7 @@ func _update_segments(update_direction: int = 0) -> void: #-1 means update from 
 				if fading_enabled && update_direction != 0:
 					var tween = get_tree().create_tween()
 					var tween_timer = get_tree().create_timer(delay)
-					tween.tween_property(segment, "modulate", background_color, segment_fade_time)
+					tween.tween_property(segment, "modulate", set_bg_color, segment_fade_time)
 					await tween_timer.timeout
 				else:
 					segment.modulate = background_color
@@ -176,7 +180,7 @@ func _update_segments(update_direction: int = 0) -> void: #-1 means update from 
 				if fading_enabled && update_direction != 0:
 					var tween = get_tree().create_tween()
 					var tween_timer = get_tree().create_timer(delay)
-					tween.tween_property(segment, "modulate", foreground_color, segment_fade_time)
+					tween.tween_property(segment, "modulate", set_fg_color, segment_fade_time)
 					await tween_timer.timeout
 				else:
 					segment.modulate = foreground_color
@@ -184,6 +188,24 @@ func _update_segments(update_direction: int = 0) -> void: #-1 means update from 
 				segment.modulate = background_color
 			else:
 				segment.modulate = change_color
+
+func _set_segment_color(seg: int, size: int):
+		var segment_frac := seg / size
+		var segment := segments[seg] as TextureRect
+		if segment_frac < display_percent and segment_frac < percent:
+			segment.modulate = foreground_color
+		elif segment_frac >= display_percent and segment_frac >= percent:
+			if fading_enabled:
+				var tween = get_tree().create_tween()
+				var tween_timer = get_tree().create_timer(delay)
+				tween.tween_property(segment, "modulate", background_color, segment_fade_time)
+				await tween_timer.timeout
+			else:
+				segment.modulate = background_color
+		else:
+			segment.modulate = change_color
+
+
 
 func _end_flash() -> void:
 	flashing = false
